@@ -11,6 +11,7 @@ const Homepage = () => {
   const { data, isFetching } = useGetCryptosQuery(10);
 
   const globalStats = data?.data?.stats;
+  console.log(globalStats);
 
   if (isFetching) {
     return "Loading ....";
@@ -24,11 +25,11 @@ const Homepage = () => {
       </Title>
       <Row>
         <Col span={12}>
-          <Statistic title="Total cryptocurencies" value={globalStats.total} />
+          <Statistic title="Total cryptocurencies" value={globalStats.total} /> 
         </Col>
         <Col span={12}>
           <Statistic
-            title="Total Markey Cap"
+            title="Total Market Cap"
             value={millify(globalStats.totalMarketCap)}
           />
         </Col>
@@ -52,18 +53,25 @@ const Homepage = () => {
         </Col>
       </Row>
 
-      <div className = "home-heading-container">
-      <Title level={2} className="home-title">Top 10 cryptocurencies in the World</Title>
-      <Title level={3} className="show-more"><Link to="/cryptocurrencies">Show more</Link></Title>
+      <div className="home-heading-container">
+        <Title level={2} className="home-title">
+          Top 10 cryptocurencies in the World
+        </Title>
+        <Title level={3} className="show-more">
+          <Link to="/cryptocurrencies">Show more</Link>
+        </Title>
       </div>
-      <Cryptocurrencies simplified/>
+      <Cryptocurrencies simplified />
 
-      <div className = "home-heading-container">
-      <Title level={2} className="home-title">Latest News</Title>
-      <Title level={3} className="show-more"><Link to="/news">Show more</Link></Title>
+      <div className="home-heading-container">
+        <Title level={2} className="home-title">
+          Latest News
+        </Title>
+        <Title level={3} className="show-more">
+          <Link to="/news">Show more</Link>
+        </Title>
       </div>
-      <News simplified/>
-
+      <News simplified />
     </>
   );
 };
